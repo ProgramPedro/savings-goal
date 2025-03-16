@@ -23,6 +23,7 @@ let donutChart = new Chart( donutChartContext, {
                 'rgb(144, 238, 144)',
                 'rgb(35, 83, 71)'
             ],
+            borderColor: "#91D59A" ,
             hoverOffset: 4,
         }],
     },
@@ -32,7 +33,7 @@ let donutChart = new Chart( donutChartContext, {
         plugins: {
             legend: {
                 labels: {
-                    color: '#DAF1DE'
+                    color: "#91D59A"
                 }
             }
         }

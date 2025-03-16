@@ -1,5 +1,12 @@
 body {
-    background-color: white;
+    background-color: beige;
+
+    text-shadow:
+    1px 1px 0 #76B37F,
+    -1px -1px 0 #76B37F,
+    1px -1px 0 #76B37F,
+    -1px 1px 0 #76B37F;
+
     font-family: "Roboto";
     font-size: 22px;
 }
