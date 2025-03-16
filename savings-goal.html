@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Savings Goal</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link rel="stylesheet" href="savings-goal.css">
 </head>
 <body>
@@ -20,21 +21,22 @@
     <div class="inputs">
         <!-- Where the user inputs their -->
          <form>
-            <div>
-                <label for="total-savings">SAVINGS GOAL:</label>
-                <input type="text" id="total-savings" name="total-savings"><br>
-            </div>
-            <div>
-                <label for="add-money">SAVE:</label>
-                <input type="text" id="add-money" name="add-money"><br>
-            </div>
-            <div>
-                <label for="remove-money">REMOVE:</label>
-                <input type="text" id="remove-money" name="remove-money"><br>
+            <div class="input-container">
+                <div>
+                    <label for="total-savings">SAVINGS GOAL:</label>
+                    <input type="text" id="total-savings" name="total-savings"><br>
+                </div>
+                <div>
+                    <label for="add-money">SAVE:</label>
+                    <input type="text" id="add-money" name="add-money"><br>
+                </div>
+                <div>
+                    <label for="remove-money">REMOVE:</label>
+                    <input type="text" id="remove-money" name="remove-money"><br>
+                </div>
             </div>
          </form>
     </div>
-    
     <!--JavaScript Code-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
     <script src="savings-goal.js"></script>

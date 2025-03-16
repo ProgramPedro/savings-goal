@@ -1,10 +1,16 @@
+body {
+    background-color: #051F20;
+    font-family: "Roboto";
+    font-size: 22px;
+}
+
 h1 {
-    color: #5bd45b;
+    color: #8EB69B;
     text-align: center;
 }
 
 h3 {
-    color: #7eed7e;
+    color: #DAF1DE;
 }
 
 .title {
@@ -19,13 +25,20 @@ h3 {
 
 .inputs {
     display: flex;
-    align-content: center;
     justify-content: center;
+    align-items: center;
+    height: 25vh;
 }
 
+.input-container {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+}
 
-.inputs div {
+.input-container div {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
+    color: #DAF1DE;
 }

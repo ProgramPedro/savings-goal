@@ -21,14 +21,21 @@ let donutChart = new Chart( donutChartContext, {
             data: [10000, 0],
             backgroundColor: [
                 'rgb(144, 238, 144)',
-                'rgb(6, 64, 43)'
+                'rgb(35, 83, 71)'
             ],
             hoverOffset: 4,
         }],
     },
     options: {
         responsive: false,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#DAF1DE'
+                }
+            }
+        }
     }
 });
 
