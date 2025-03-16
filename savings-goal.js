@@ -2,14 +2,14 @@ let totalSavings = document.getElementById("total-savings");
 let addMoney = document.getElementById("add-money");
 let removeMoney = document.getElementById("remove-money");
 
-let donutChart = document.getElementById("savings-chart").getContext('2d');
+let donutChartContext = document.getElementById("savings-chart").getContext('2d');
 
 textEventListener(totalSavings);
 textEventListener(removeMoney);
 textEventListener(addMoney);
 
 
-new Chart( donutChart, {
+let donutChart = new Chart( donutChartContext, {
     type: 'doughnut',
     data: {
         labels: [
@@ -38,14 +38,19 @@ function textEventListener(actionName) {
             //Prevent the form submission (if the input is inside a form)
             event.preventDefault();
             //Clears the textbox when the user clicks the enter key
-            actionName.value = "";
 
             if (actionName == totalSavings) {
-                actionName.value = "TESTESTEST"
+                donutChart.data.datasets[0].data[0] = parseFloat(actionName.value);
+                donutChart.update();
+                actionName.value = "";
             } else if (actionName == removeMoney) {
-                actionName.value = "TESTESTEST"
+                donutChart.data.datasets[0].data[1] = donutChart.data.datasets[0].data[1] - parseFloat(actionName.value);
+                donutChart.update();
+                actionName.value = "";
             } else if (actionName == addMoney) {
-                actionName.value = "TESTESTEST"
+                donutChart.data.datasets[0].data[1] = donutChart.data.datasets[0].data[1] + parseFloat(actionName.value);
+                donutChart.update();
+                actionName.value = "";
             }
         }
     });
