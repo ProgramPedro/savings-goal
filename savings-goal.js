@@ -53,13 +53,13 @@ function textEventListener(actionName) {
             } else {
                 
                 if (actionName == totalSavings) {
-                    donutChart.data.datasets[0].data[0] = parseFloat(actionName.value);
                     ogRemaining = parseFloat(actionName.value);
+                    donutChart.data.datasets[0].data[0] = parseFloat(actionName.value) - donutChart.data.datasets[0].data[1];
                     donutChart.update();
                     actionName.value = "";
 
                 } else if (actionName == removeMoney) {
-                    if (donutChart.data.datasets[0].data[1] - parseFloat(actionName.value) < 0) {
+                    if (donutChart.data.datasets[0].data[1] - parseFloat(actionName.value) <= 0) {
                         donutChart.data.datasets[0].data[1] = 0;
                         /* Add a way for remove money to have an original total savings count!*/
                         donutChart.data.datasets[0].data[0] = ogRemaining;
