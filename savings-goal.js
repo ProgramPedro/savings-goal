@@ -1,8 +1,10 @@
+//Action Names
 let totalSavings = document.getElementById("total-savings");
-let ogRemaining = 10000;
-
 let addMoney = document.getElementById("add-money");
 let removeMoney = document.getElementById("remove-money");
+
+//Total amount user is saving towards
+let savingsGoalAmount = 10000;
 
 let donutChartContext = document.getElementById("savings-chart").getContext('2d');
 
@@ -53,7 +55,7 @@ function textEventListener(actionName) {
             } else {
                 
                 if (actionName == totalSavings) {
-                    ogRemaining = parseFloat(actionName.value);
+                    savingsGoalAmount = parseFloat(actionName.value);
                     donutChart.data.datasets[0].data[0] = parseFloat(actionName.value) - donutChart.data.datasets[0].data[1];
                     donutChart.update();
                     actionName.value = "";
@@ -62,7 +64,7 @@ function textEventListener(actionName) {
                     if (donutChart.data.datasets[0].data[1] - parseFloat(actionName.value) <= 0) {
                         donutChart.data.datasets[0].data[1] = 0;
                         /* Add a way for remove money to have an original total savings count!*/
-                        donutChart.data.datasets[0].data[0] = ogRemaining;
+                        donutChart.data.datasets[0].data[0] = savingsGoalAmount;
                         donutChart.update();
                         actionName.value = "";
                     } else {
@@ -73,14 +75,14 @@ function textEventListener(actionName) {
                     }
 
                 } else if (actionName == addMoney) {
-                    if ((donutChart.data.datasets[0].data[1] + parseFloat(actionName.value)) > ogRemaining) {
-                        donutChart.data.datasets[0].data[1] = ogRemaining;
+                    if ((donutChart.data.datasets[0].data[1] + parseFloat(actionName.value)) > savingsGoalAmount) {
+                        donutChart.data.datasets[0].data[1] = savingsGoalAmount;
                         donutChart.data.datasets[0].data[0] = 0;
                         donutChart.update();
                         actionName.value = "";
                     } else {
                         donutChart.data.datasets[0].data[1] += parseFloat(actionName.value);
-                        donutChart.data.datasets[0].data[0] = ogRemaining - donutChart.data.datasets[0].data[1];
+                        donutChart.data.datasets[0].data[0] = savingsGoalAmount - donutChart.data.datasets[0].data[1];
                         donutChart.update();
                         actionName.value = "";
                     }
