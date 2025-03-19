@@ -3,15 +3,31 @@ let totalSavings = document.getElementById("total-savings");
 let addMoney = document.getElementById("add-money");
 let removeMoney = document.getElementById("remove-money");
 
-//Total amount user is saving towards
-let savingsGoalAmount = 10000;
+//Stores the amount in local storage so users may come back to add onto their savings
+if (!localStorage.getItem('userData')) {
+    jsonData = {
+        savings_goal_amount: 10000,
+        amount_remaining: 10000,
+        amount_saved: 0
+    };
 
-let donutChartContext = document.getElementById("savings-chart").getContext('2d');
+    localStorage.setItem('userData', JSON.stringify(jsonData));
+}
 
+let storedData = JSON.parse(localStorage.getItem('userData'));
+
+//Stored the savings goal, amount of money remaining to reach the goal, and total amount already saved
+let savingsGoalAmount = Number(storedData.savings_goal_amount);
+let remaining = Number(storedData.amount_remaining);
+let saved = Number(storedData.amount_saved);
+
+//Listens for when the user clicks "Enter" key depending on the specific textbox
 textEventListener(totalSavings);
 textEventListener(removeMoney);
 textEventListener(addMoney);
 
+//Initialize the donut chart
+let donutChartContext = document.getElementById("savings-chart").getContext('2d');
 let donutChart = new Chart( donutChartContext, {
     type: 'doughnut',
     data: {
@@ -20,7 +36,7 @@ let donutChart = new Chart( donutChartContext, {
             'Saved'
         ],
         datasets: [{
-            data: [10000, 0],
+            data: [remaining, saved],
             backgroundColor: [
                 'rgb(144, 238, 144)',
                 'rgb(35, 83, 71)'
@@ -88,6 +104,12 @@ function textEventListener(actionName) {
                     }
                     
                 }
+                
+                //Updated local storage data
+                storedData.amount_remaining = donutChart.data.datasets[0].data[0];
+                storedData.amount_saved = donutChart.data.datasets[0].data[1];
+                storedData.savings_goal_amount = savingsGoalAmount;
+                localStorage.setItem('userData', JSON.stringify((storedData)));
             }
         }
     });
